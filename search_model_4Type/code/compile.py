@@ -44,7 +44,7 @@ def compileModel(filename, estfile, estname):
     inst2 = T, ben2
     timevec = np.arange(T) + 1
 
-    logdir = './log/'
+    logdir = '../log/'
     figpath = 'figures_'+filename+'/'
     logfile = filename + '.tex' # here it defines to which file the log will be written.
 
@@ -484,16 +484,7 @@ if __name__ == "__main__":
 
     print('\n\n\n')
 
-    # compileModel(
-    #     filename='compiled_model',
-    #     estfile = 'estimates_SingleStart.xlsx'
-    #     )
-    # compileModel(
-    #     filename='compiled_model',
-    #     estfile = 'estimates_MultiStart.xlsx',
-    #     log = 'Est4_log.db'
-    #     )
-    
+  
     estname = 'Est1'
     compileModel(
         filename= estname +'_compiled',

@@ -8,6 +8,8 @@ import estimagic as em
 from numba import njit
 
 
+momentsfile = "../data/base_moments_Germany_wages.xlsx"
+
 def mu(xi, t):
     delta, k, gamma, mu_S, sigma, kappa, pi = xi
     return mu_S + pi * np.minimum(t - kappa, np.zeros(len(t)))
@@ -67,34 +69,6 @@ def optimalPath(xi, b):
 
     return s, logphi
 
-# def gradient_descent(func, x0, bounds, lr=0.01, max_iter=1000):
-#     x = np.array(x0)
-#     for i in range(max_iter):
-#         # Naive gradient estimation
-#         grad = np.zeros_like(x)
-#         for j in range(len(x)):
-#             x_plus = np.array(x)
-#             x_minus = np.array(x)
-#             x_plus[j] += 1e-5
-#             x_minus[j] -= 1e-5
-#             grad[j] = (func(x_plus) - func(x_minus)) / (2 * 1e-5)
-        
-#         # Update step with basic handling for bounds
-#         x_next = x - lr * grad
-#         for j, (lower, upper) in enumerate(bounds):
-#             if lower is not None:
-#                 x_next[j] = max(lower, x_next[j])
-#             if upper is not None:
-#                 x_next[j] = min(upper, x_next[j])
-        
-#         # Check for convergence (simple criterion, can be improved)
-#         if np.linalg.norm(x_next - x) < 1e-6:
-#             break
-        
-#         x = x_next
-    
-#     return x
-
 # @njit(cache=True)
 def clip_gradient(grad, max_grad=1):
     norm = np.linalg.norm(grad)
@@ -115,28 +89,6 @@ def check_and_update_bound(func, x, bounds):
             x_at_upper[j] = upper
             if func(x_at_upper) < func(x):
                 x[j] = upper
-    return x
-
-# @njit(cache=True)
-def gradient_descent(func, x0, bounds, lr=0.01, max_iter=1000, max_grad=1):
-    x = np.array(x0)
-    for i in range(max_iter):
-        grad = np.zeros_like(x)
-        for j in range(len(x)):
-            x_plus = np.copy(x)
-            x_minus = np.copy(x)
-            x_plus[j] += 1e-5
-            x_minus[j] -= 1e-5
-            grad[j] = (func(x_plus) - func(x_minus)) / (2 * 1e-5)
-        
-        grad = clip_gradient(grad, max_grad=max_grad)
-        x_next = x - lr * grad
-        x_next = check_and_update_bound(func, x_next, bounds)
-        
-        if np.linalg.norm(x_next - x) < 1e-6:
-            break
-        x = x_next
-    
     return x
 
 
@@ -183,12 +135,7 @@ def steadyState(xi, b_S):
     s_S = res.x[0]
     logphi_S = res.x[1]
 
-    # print(res.x)
-    # optimized_x = gradient_descent(steadyStateSystem, x0, bounds)
-    # s_S = optimized_x[0]
-    # logphi_S = optimized_x[1]
-    # print(optimized_x)
-    
+
     s_S_cap = min(s_S,1)
 
     return s_S_cap, logphi_S
@@ -375,8 +322,6 @@ def sse(params, target, W, institutions_pre, institutions_post):
 
 
 def matchingMoments():
-
-    momentsfile = "./base_moments_Germany_wages.xlsx"
 
     moments_df = pd.read_excel(momentsfile, index_col=0)
     moments_hazard_12 = moments_df["haz12"].to_numpy()[1:]

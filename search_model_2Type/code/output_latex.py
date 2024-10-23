@@ -52,7 +52,7 @@ def latex_header(logdir,logfile,title):
 def latex_close(logdir,logfile):
     
     with open(logdir+logfile,'a') as f:        
-        	f.write('\\end{document}\n')
+        f.write('\\end{document}\n')
 
     origdir = os.getcwd()
     os.chdir(logdir)
@@ -66,6 +66,14 @@ def latex_close(logdir,logfile):
             os.system('/Library/TeX/texbin/pdflatex -shell-escape --src -interaction=nonstopmode '+logfile)
     elif os.name=='nt' :
         os.system('pdflatex -shell-escape --src -interaction=nonstopmode '+logfile)
+
+    # Delete auxiliary files
+    aux_files = [logfile[:-4] + ext for ext in ['.aux', '.log', '.out', '.toc', '.fdb_latexmk']]
+    for aux_file in aux_files:
+        try:
+            os.remove(aux_file)
+        except FileNotFoundError:
+            print(f'{aux_file} not found, skipping deletion.')
 
     os.chdir(origdir)
 
@@ -344,3 +352,5 @@ if __name__ == "__main__":
     latex_close(d,f)
     
     
+
+
