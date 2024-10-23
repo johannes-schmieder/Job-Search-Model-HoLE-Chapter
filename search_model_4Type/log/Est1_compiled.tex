@@ -1,0 +1,161 @@
+\documentclass[letter, 10pt]{article}
+\usepackage{amssymb,amsmath,amsthm,verbatim,esint,multicol}
+\usepackage{enumitem}
+\usepackage[round]{natbib}
+\usepackage[margin=.66 in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{bbm}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{pdflscape}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{footnote}
+\makesavenoteenv{tabular}
+\usepackage{booktabs,threeparttable}
+\usepackage{setspace}
+\titleformat*{\section}{\large\bfseries}
+\titleformat*{\subsection}{\bfseries}
+\titleformat*{\subsubsection}{\itshape}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\fancyhead[CO,CE]{Search Model Simulations }
+\setlength\parindent{24pt}
+\begin{document}
+\begin{table}[h]
+\centering
+\caption{Parameters}
+\begin{tabular}{lr}
+\toprule
+ & value \\
+\midrule
+delta & 0.9493 \\
+k1 & 47.0856 \\
+gamma & 1.0000 \\
+mu1 & 4.0364 \\
+sigma & 0.0100 \\
+kappa & 24.0000 \\
+pi & 0.0000 \\
+k2 & 148.3513 \\
+k3 & 6.8972 \\
+k4 & 0.2317 \\
+mu2 & 3.6166 \\
+mu3 & 4.2382 \\
+mu4 & 3.4538 \\
+q2 & 0.3300 \\
+q3 & 0.2378 \\
+q4 & 0.0100 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Estimation Options}
+\begin{tabular}{ll}
+\toprule
+ & Option \\
+\midrule
+spec & Est1 \\
+algo & nag\_dfols \\
+multistart & True \\
+n\_cores & 28 \\
+n\_samples & 2800 \\
+Finished & True \\
+Runtime (hours) & 1.513447 \\
+Criterion & 16.692658 \\
+Criterion Evaluations & 114474 \\
+dDdP & 0.143411 \\
+dWdP & 0.000000 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Start Parameters}
+\begin{tabular}{lrrr}
+\toprule
+ & value & lower & upper \\
+\midrule
+k1 & 100.0000 & 0.1000 & 200.0000 \\
+k2 & 200.0000 & 0.1000 & 200.0000 \\
+k3 & 50.0000 & 0.1000 & 200.0000 \\
+k4 & 50.0000 & 0.1000 & 200.0000 \\
+mu1 & 3.0000 & 2.0000 & 5.0000 \\
+mu2 & 3.6000 & 2.0000 & 5.0000 \\
+mu3 & 3.4000 & 2.0000 & 5.0000 \\
+mu4 & 3.0000 & 2.0000 & 5.0000 \\
+q2 & 0.2000 & 0.0000 & 0.3300 \\
+q3 & 0.2000 & 0.0000 & 0.3300 \\
+q4 & 0.2000 & 0.0000 & 0.3300 \\
+gamma & 0.2000 & 0.0100 & 1.0000 \\
+sigma & 0.1000 & 0.0100 & 1.0000 \\
+delta & 0.9950 & 0.8000 & 0.9990 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Hazard Rate} 
+ 
+
+\includegraphics[clip=true,trim=0cm 0cm 0cm 0cm,width = 0.68\textwidth]{figures_Est1_compiled/fig_haz.pdf} 
+
+\textbf{Reemployment Wage} 
+ 
+
+\includegraphics[clip=true,trim=0cm 0cm 0cm 0cm,width = 0.68\textwidth]{figures_Est1_compiled/fig_wage.pdf} 
+
+\pagebreak 
+ \textbf{Show Type Aggregation} 
+ 
+\includegraphics[clip=true,trim=0cm 0cm 0cm 0cm,width = 0.45\textwidth]{figures_Est1_compiled/fig_type_agg_s.pdf} 
+\includegraphics[clip=true,trim=0cm 0cm 0cm 0cm,width = 0.45\textwidth]{figures_Est1_compiled/fig_type_agg_phi.pdf} 
+
+ 
+
+ 
+\includegraphics[clip=true,trim=0cm 0cm 0cm 0cm,width = 0.45\textwidth]{figures_Est1_compiled/fig_type_agg_surv.pdf} 
+\includegraphics[clip=true,trim=0cm 0cm 0cm 0cm,width = 0.45\textwidth]{figures_Est1_compiled/fig_type_agg_share.pdf} 
+ 
+
+ 
+\includegraphics[clip=true,trim=0cm 0cm 0cm 0cm,width = 0.45\textwidth]{figures_Est1_compiled/fig_type_agg_hazard.pdf} 
+\includegraphics[clip=true,trim=0cm 0cm 0cm 0cm,width = 0.45\textwidth]{figures_Est1_compiled/fig_type_agg_w.pdf} 
+
+ 
+
+ 
+\includegraphics[clip=true,trim=0cm 0cm 0cm 0cm,width = 0.45\textwidth]{figures_Est1_compiled/fig_haz_agg.pdf}
+\includegraphics[clip=true,trim=0cm 0cm 0cm 0cm,width = 0.45\textwidth]{figures_Est1_compiled/fig_wage_agg.pdf} 
+
+\pagebreak 
+ \textbf{Type 1} 
+ 
+\includegraphics[clip=true,trim=0cm 0cm 0cm 0cm,width = 0.45\textwidth]{figures_Est1_compiled/fig_type1_s.pdf} 
+\includegraphics[clip=true,trim=0cm 0cm 0cm 0cm,width = 0.45\textwidth]{figures_Est1_compiled/fig_type1_phi.pdf} 
+
+\includegraphics[clip=true,trim=0cm 0cm 0cm 0cm,width = 0.45\textwidth]{figures_Est1_compiled/fig_type1_hazard.pdf} 
+\includegraphics[clip=true,trim=0cm 0cm 0cm 0cm,width = 0.45\textwidth]{figures_Est1_compiled/fig_type1_w.pdf} 
+
+\pagebreak 
+ \textbf{Type 2} 
+ 
+\includegraphics[clip=true,trim=0cm 0cm 0cm 0cm,width = 0.45\textwidth]{figures_Est1_compiled/fig_type2_s.pdf} 
+\includegraphics[clip=true,trim=0cm 0cm 0cm 0cm,width = 0.45\textwidth]{figures_Est1_compiled/fig_type2_phi.pdf} 
+
+\includegraphics[clip=true,trim=0cm 0cm 0cm 0cm,width = 0.45\textwidth]{figures_Est1_compiled/fig_type2_hazard.pdf} 
+\includegraphics[clip=true,trim=0cm 0cm 0cm 0cm,width = 0.45\textwidth]{figures_Est1_compiled/fig_type2_w.pdf} 
+
+\pagebreak 
+ \textbf{Type 3} 
+ 
+\includegraphics[clip=true,trim=0cm 0cm 0cm 0cm,width = 0.45\textwidth]{figures_Est1_compiled/fig_type3_s.pdf} 
+\includegraphics[clip=true,trim=0cm 0cm 0cm 0cm,width = 0.45\textwidth]{figures_Est1_compiled/fig_type3_phi.pdf} 
+
+\includegraphics[clip=true,trim=0cm 0cm 0cm 0cm,width = 0.45\textwidth]{figures_Est1_compiled/fig_type3_hazard.pdf} 
+\includegraphics[clip=true,trim=0cm 0cm 0cm 0cm,width = 0.45\textwidth]{figures_Est1_compiled/fig_type3_w.pdf} 
+
+\end{document}
