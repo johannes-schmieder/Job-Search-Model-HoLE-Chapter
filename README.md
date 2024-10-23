@@ -1,4 +1,4 @@
-# Job-Search-Model-HoLE-Chapter
+# Job Search Model HoLE Chapter
 
 This is the replication code to create Figures 4, 5 and 9 in the Handbook of Labor Economics Chapter "Job Search, Unemployment Insurance, and Active Labor Market Policies" by Thomas Le Barbanchon, Johannes Schmieder, Andrea Weber.
 
